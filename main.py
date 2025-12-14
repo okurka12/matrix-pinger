@@ -27,8 +27,15 @@ async def ping_command(ctx: niobot.Context):
 
 @bot.command(name="latency")
 async def latency_command(ctx: niobot.Context):
-    """Replies with the event's latency in ms"""
+    """replies with the event's latency in ms"""
     await ctx.respond(f"latency: {ctx.latency:.2f} ms")
+
+@bot.command(name="info")
+async def info_command(ctx: niobot.Context):
+    """info about the bot"""
+    await ctx.respond(
+        "Matrix pinger bot: https://github.com/okurka12/matrix-pinger"
+    )
 
 
 bot.run(password=cfg.password)
