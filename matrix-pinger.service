@@ -1,0 +1,16 @@
+# SYSTEMD.UNIT(5)
+# tldr: put for example into /usr/local/lib/systemd/system/
+
+[Unit]
+Description=Matrix pinger bot (https://github.com/okurka12/matrix-pinger)
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USER_HERE
+WorkingDirectory=YOUR_DIRECTORY_HERE
+ExecStart=/bin/bash -c 'source venv/bin/activate && ./start.sh'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
