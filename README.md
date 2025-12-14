@@ -21,6 +21,7 @@ An always-online fellow that responds `pong` to your `!ping`
 
 - `nano matrix-pinger.service` - edit your user and directory
 - `sudo cp matrix-pinger.service /usr/local/lib/systemd/system/`
+ - you may need to `mkdir -p /usr/local/lib/systemd/system/`
 - `sudo systemctl enable matrix-pinger`
 - `sudo systemctl start matrix-pinger`
 
