@@ -1,0 +1,6 @@
+
+niobot.NioBot store_path parameter is said to be default ./store but i found
+that it actually needs to be specified
+
+print a helpful error message when the homeserver parameter doesn't start with
+https://
