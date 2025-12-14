@@ -22,7 +22,25 @@ bot = niobot.NioBot(
     case_insensitive=True,
 )
 
-# Define a command
+# responds to ping without exclamation mark
+@bot.on_event("message")
+async def on_message(room: niobot.MatrixRoom, event: niobot.RoomMessage):
+    if event.sender == bot.user_id:
+        return
+
+    if bot.is_old(event):
+        return
+
+    if not isinstance(event, niobot.RoomMessageText):
+        return
+
+    if event.body == "ping":
+        await bot.send_message(
+            room=room,
+            content="pong",
+            reply_to=event
+        )
+
 @bot.command(name="ping")
 async def ping_command(ctx: niobot.Context):
     """replies with 'pong'"""
