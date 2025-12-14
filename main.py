@@ -103,4 +103,26 @@ async def verify_device_command(
         await ctx.respond("only owner can do this")
 
 
+@bot.command(name="blacklist-device")
+async def blacklist_device_command(
+    ctx: niobot.Context,
+    user_id: str,
+    device_id: str
+):
+    """blacklist a specific device key (owner only)"""
+    if not bot.is_owner(ctx.msg.sender):
+        await ctx.respond("only owner can do this")
+        return
+    olmdevice = lookup_device(user_id, device_id)
+
+    if olmdevice is None:
+        await ctx.respond("no such device in my store")
+    else:
+        result = bot.blacklist_device(olmdevice)
+        if result:
+            await ctx.respond("successfully blacklisted")
+        else:
+            await ctx.respond("it was on the blacklist already")
+
+
 bot.run(password=cfg.password)
