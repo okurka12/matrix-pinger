@@ -37,5 +37,10 @@ async def info_command(ctx: niobot.Context):
         "Matrix pinger bot: https://github.com/okurka12/matrix-pinger"
     )
 
+@bot.command(name="echo")
+async def echo_command(ctx: niobot.Context, message):
+    """repeats message"""
+    await ctx.respond(str(message))
+
 
 bot.run(password=cfg.password)
