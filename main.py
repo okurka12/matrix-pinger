@@ -34,7 +34,7 @@ async def on_message(room: niobot.MatrixRoom, event: niobot.RoomMessage):
     if not isinstance(event, niobot.RoomMessageText):
         return
 
-    if event.body == "ping":
+    if event.body.lower() == "ping":
         await bot.send_message(
             room=room,
             content="pong",
