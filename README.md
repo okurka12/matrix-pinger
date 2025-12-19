@@ -2,6 +2,15 @@
 
 An always-online fellow that responds `pong` to your `!ping`
 
+# Quick guide for docker installation
+
+- `mkdir store` (your bot's device key is going to be stored here, outside of
+  the container)
+- edit `config.py` to match your configuration
+- create `password.py` with line `password = "mypassword123"` (change
+  `mypassword123` to your actual password)
+- `docker compose up -d`
+
 ## How to set up
 
 - `mkdir venv`
