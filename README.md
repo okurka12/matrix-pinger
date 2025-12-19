@@ -2,7 +2,7 @@
 
 An always-online fellow that responds `pong` to your `!ping`
 
-# Quick guide for docker installation
+## Quick guide for docker installation
 
 - `mkdir store` (your bot's device key is going to be stored here, outside of
   the container)
