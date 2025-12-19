@@ -1,0 +1,23 @@
+name: matrix-pinger
+
+services:
+  matrix-pinger:
+
+    # image name
+    image: matrix-pinger
+
+    # Build the image from the Dockerfile in the current directory
+    build: .
+
+    # running container name
+    container_name: matrix-pinger
+
+    # The "Service" behavior: Restart automatically if it crashes or the
+    # server reboots
+    restart: unless-stopped
+
+    # The Magic Part: Mount your local token.py into the container
+    volumes:
+      - ./config.py:/matrix-pinger/config.py
+      - ./password.py:/matrix-pinger/password.py
+      - ./store:/matrix-pinger/store
