@@ -1,4 +1,5 @@
 import logging
+import datetime
 
 # Set the logging level to DEBUG/INFO to see all the connection attempts and errors
 logging.basicConfig(level=logging.INFO)
@@ -8,6 +9,8 @@ import niobot
 from nio.crypto.device import OlmDevice
 
 import config as cfg
+
+START_TIME = datetime.datetime.now()
 
 # Initialize the bot
 bot = niobot.NioBot(
@@ -45,6 +48,11 @@ async def on_message(room: niobot.MatrixRoom, event: niobot.RoomMessage):
 async def ping_command(ctx: niobot.Context):
     """replies with 'pong'"""
     await ctx.respond("pong")
+
+@bot.command(name="uptime")
+async def uptime_command(ctx):
+    """shows uptime of the bot"""
+    await ctx.respond(str(datetime.datetime.now() - START_TIME))
 
 @bot.command(name="latency")
 async def latency_command(ctx: niobot.Context):
